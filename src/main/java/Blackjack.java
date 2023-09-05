@@ -1,20 +1,66 @@
 public class Blackjack {
 
     public int parseCard(String card) {
-        throw new UnsupportedOperationException("Please implement the Blackjack.parseCard method");
+        //throw new UnsupportedOperationException("Please implement the Blackjack.parseCard method");
+        switch (card) {
+            case "ace" -> {
+                return 11;
+            }
+            case "two" -> {
+                return 2;
+            }
+            case "three" -> {
+                return 3;
+            }
+            case "four" -> {
+                return 4;
+            }
+            case "five" -> {
+                return 5;
+            }
+            case "six" -> {
+                return 6;
+            }
+            case "seven" -> {
+                return 7;
+            }
+            case "eight" -> {
+                return 8;
+            }
+            case "nine" -> {
+                return 9;
+            }
+            case "ten", "jack", "queen", "king" -> {
+                return 10;
+            }
+            default -> {
+                return 0;
+            }
+        }
     }
 
     public boolean isBlackjack(String card1, String card2) {
-        throw new UnsupportedOperationException("Please implement the Blackjack.isBlackjack method");
+        //throw new UnsupportedOperationException("Please implement the Blackjack.isBlackjack method");
+        return parseCard(card1) + parseCard(card2) == 21;
     }
 
     public String largeHand(boolean isBlackjack, int dealerScore) {
-        throw new UnsupportedOperationException("Please implement the Blackjack.largeHand method");
+        //throw new UnsupportedOperationException("Please implement the Blackjack.largeHand method");
+        if (!isBlackjack) {
+            return "P";
+        } else if (dealerScore < 10) {
+            return "W";
+        } else {
+            return "S";
+        }
     }
 
     public String smallHand(int handScore, int dealerScore) {
-        throw new UnsupportedOperationException("Please implement the Blackjack.smallHand method");
+        // throw new UnsupportedOperationException("Please implement the Blackjack.smallHand method");
+        if (handScore >= 17) return "S";
+        else return handScore <= 11 || dealerScore >= 7 ? "H" : "S";
     }
+
 
     // FirstTurn returns the semi-optimal decision for the first turn, given the cards of the player and the dealer.
     // This function is already implemented and does not need to be edited. It pulls the other functions together in a
